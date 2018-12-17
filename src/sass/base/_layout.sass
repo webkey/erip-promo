@@ -1,0 +1,253 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+html
+	font-size: 62.5%
+
+	// блокировка скролла
+	&.css-scroll-fixed:not(.open-only-mob)
+		+scroll-blocked
+
+	&.css-scroll-fixed.open-only-mob
+		+media('<tab-lg')
+			+scroll-blocked
+
+body
+	position: relative
+	+font-normal
+	+font($font-size, $line-height)
+	color: $text-color
+	min-width: $page-layout-min
+	background-color: $bg-color
+	background-image: url(../../img/bg-mobile@2x.png)
+	background-repeat: no-repeat
+	//background-position: center 50px
+	background-position: center
+	background-size: 410px
+
+	&.home-page
+		background-image: url(../../img/bg-mobile-index@2x.png)
+		background-size: 415px
+
+	&, &.home-page
+		+media('>tab-sm')
+			//background-repeat: repeat-y
+			background-image: url(../../img/bg-desktop.png)
+			background-size: auto
+
+	// выделение текста
+	*::selection
+		background-color: $base-color
+		color: white
+
+/* === LAYOUT ===
+.max-wrap
+	max-width: $page-layout-width
+
+	+media('>tab-sm')
+		max-width: $page-layout-width-desk
+
+	//&.layout
+		max-width: #{$page-layout-width +  nth($page-layout-space, 2)*2}
+
+.layout
+	+padding-horizontal(nth($page-layout-space, 2))
+	+push-auto
+
+// выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
+// и их максимальная ширина
+.layout-article
+	padding: $text-layout-space
+
+	+media('<tab-lg')
+		padding: $text-layout-space--md
+
+	+media('<tab-sm')
+		padding: $text-layout-space--sm
+
+	& > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text, .imgc figcaption
+		max-width: $text-layout-width
+		+padding-horizontal(0)
+		+push-auto
+
+	.layout-flood
+		max-width: $flood-layout-width
+		+padding-horizontal(0)
+		+push-auto
+
+	// элеметы без отступов по бокам
+	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
+	.layout-full-width, .layout-wide
+
+		+margin-horizontal(-#{nth($text-layout-space, 2)})
+
+		+media('<tab-lg')
+			+margin-horizontal(-#{nth($text-layout-space--md, 2)})
+
+		+media('<tab-sm')
+			+margin-horizontal(-#{nth($text-layout-space--sm, 2)})
+
+// максимальная ширина текстовых элементов на внутренней (текстовой) странице
+.max-wrap-text
+	//max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
+	max-width: $text-layout-width
+
+	//+media('<tab-lg')
+		max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
+
+	//+media('<tab-sm')
+		max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
+
+// выравнивание текстовых элементов на внутренней (текстовой) странице
+// и их максимальная ширина
+.layout-text
+	max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
+	+padding-horizontal(nth($text-layout-space, 2))
+	+push-auto
+
+	+media('<tab-lg')
+		max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
+		+padding-horizontal(nth($text-layout-space--md, 2))
+
+	+media('<tab-sm')
+		max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
+		+padding-horizontal(nth($text-layout-space--sm, 2))
+
+// максимальная ширина альтернативных элементов на внутренней (текстовой) странице
+.max-wrap-flood
+	//max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
+	max-width: $flood-layout-width
+
+	//+media('<tab-lg')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
+
+	//+media('<tab-sm')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--mob, 2))*2}
+
+// выравнивание альтернативных элементов на внутренней (текстовой) странице
+// и их максимальная ширина
+.layout-flood
+	max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
+	+padding-horizontal((nth($text-layout-space, 2)))
+	+push-auto
+
+	+media('<tab-lg')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
+		+padding-horizontal((nth($text-layout-space--md, 2)))
+
+	+media('<tab-sm')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--sm, 2))*2}
+		+padding-horizontal((nth($text-layout-space--sm, 2)))
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+		max-width: none
+
+// элеметы с отступами по бокам
+.layout-wide
+	+padding-horizontal((nth($text-layout-space, 2)))
+
+	+media('<tab-lg')
+		+padding-horizontal((nth($text-layout-space--md, 2)))
+
+	+media('<tab-sm')
+		+padding-horizontal((nth($text-layout-space--sm, 2)))
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+		max-width: none
+
+// элеметы без отступов по бокам
+.layout-full-width
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+		max-width: none
+
+// выравнивание по центру блочных элементов
+.push-auto
+	margin-left: auto
+	margin-right: auto
+
+// лэяут страницы
+.wrapper
+	position: relative
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: stretch
+	margin: 0 auto
+	min-height: 100vh
+	max-width: $page-layout-width
+	box-shadow: 0 2px 4px rgba($shadow-color, 0.5)
+	// transition
+	$prop: max-width
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
+
+	+media('>tab-sm')
+		max-width: $page-layout-width-desk
+
+/* === LAYOUT end ===
+
+/* === CONTENT ===
+.main
+	display: flex
+	flex-direction: column
+	flex-shrink: 1
+	flex-grow: 1
+	position: relative
+
+.main_centered
+	justify-content: center
+
+/* === CONTENT end ===
+
+/* === HEADER ===
+.header
+	+padding-horizontal(nth($page-layout-space, 2))
+	background-color: $bg-color
+	box-shadow: 0 2px 12px rgba($shadow-color, 0.5)
+
+
+/* === HEADER end ===
+
+/* === SIDEBAR ===
+.sidebar
+	display: inline
+	float: left
+	margin: 0 0 0 -100%
+	width: $sidebar-width
+
+	background-color: sandybrown
+
+	+media('<tab-lg')
+		display: none
+
+/* === SIDEBAR end ===
+
+/* === ASIDE ===
+.aside
+	display: inline
+	float: right
+	margin: 0 0 0 -#{$aside-width}
+	width: $aside-width
+	background-color: sandybrown
+
+	+media('<desk-lg')
+		display: none
+
+/* === ASIDE end ===
+
+/* === FOOTER ===
+.footer
+	position: relative
+	background-color: $bg-color
+	+padding-horizontal(nth($page-layout-space, 2))
+
+	.home-page &
+		box-shadow: 0 -2px 12px rgba($shadow-color, 0.5)
+
+
+/* === FOOTER end ===
