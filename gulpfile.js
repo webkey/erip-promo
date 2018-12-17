@@ -30,7 +30,7 @@ var gulp = require('gulp'), // Подключаем Gulp
 	;
 
 var path = {
-	'dist': 'dist'
+	'dist': 'promo'
 };
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
@@ -172,33 +172,33 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 	gulp.src(['src/video/**/*']) // Переносим видеофайлы в продакшен
 		.pipe(gulp.dest(path.dist + '/video'));
 
-	gulp.src(['!src/css/_temp_*.css', 'src/css/*.css']) // Переносим стили в продакшен
+	gulp.src(['!src/css/_temp_*.css', '!src/css/libs.css', '!src/css/libs.min.css', 'src/css/*.css']) // Переносим стили в продакшен
 		.pipe(removeEmptyLines()) // Удаляем пустые строки
 		.pipe(gulp.dest(path.dist + '/css'));
 
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
 		.pipe(gulp.dest(path.dist + '/fonts'));
 
-	gulp.src('src/js/common.js') // Переносим common.js в продакшен
-		.pipe(strip({
-			safe: true,
-			ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
-		}))
-		.pipe(removeEmptyLines())  // Удаляем пустые строки
-		.pipe(beautify({  // Причесываем код
-			"indent_with_tabs": true,
-			"space_after_anon_function": true,
-			"max_preserve_newlines": 2
-		}))
-		.pipe(gulp.dest(path.dist + '/js'));
+	// gulp.src('src/js/common.js') // Переносим common.js в продакшен
+	// 	.pipe(strip({
+	// 		safe: true,
+	// 		ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
+	// 	}))
+	// 	.pipe(removeEmptyLines())  // Удаляем пустые строки
+	// 	.pipe(beautify({  // Причесываем код
+	// 		"indent_with_tabs": true,
+	// 		"space_after_anon_function": true,
+	// 		"max_preserve_newlines": 2
+	// 	}))
+	// 	.pipe(gulp.dest(path.dist + '/js'));
 
-	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/_temp_*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим остальные скрипты в продакшен
-		.pipe(gulp.dest(path.dist + '/js'));
+	// gulp.src(['!src/js/temp/**/*.js', '!src/js/**/_temp_*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим остальные скрипты в продакшен
+	// 	.pipe(gulp.dest(path.dist + '/js'));
 
 	gulp.src('src/assets/**/*') // Переносим дополнительные файлы в продакшен
 		.pipe(gulp.dest(path.dist + '/assets'));
 
-	gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html']) // Переносим HTML в продакшен
+	gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/typography.html', '!src/forms.html', '!src/404.html', '!src/_temp_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
 		.pipe(gulp.dest(path.dist));
 

@@ -53,25 +53,25 @@ $font-alt: Georgia, serif !default
 // ==========================================================================
 
 $font-size: 1.6rem !default
-$line-height: round-float(2.4rem/$font-size, 2) !default
+$line-height: round-float(2.2rem/$font-size, 1) !default
 // ----------------------------------------------------
 $font-size--small: 1.4rem !default
-$line-height--small: round-float(2.4rem/$font-size--small, 2) !default
+$line-height--small: round-float(2.4rem/$font-size--small, 1) !default
 // ----------------------------------------------------
 $font-size--smallest: 1.2rem !default
-$line-height--smallest: round-float(2.0rem/$font-size--smallest, 2) !default
+$line-height--smallest: round-float(2.0rem/$font-size--smallest, 1) !default
 // ----------------------------------------------------
 $letter-spacing: normal !default
 
 // Heading h1
 $font-size-h1: 4.8rem !default
-$line-height-h1: round-float(6.0rem/$font-size-h1, 2) !default
+$line-height-h1: round-float(6.0rem/$font-size-h1, 1) !default
 // ----------------------------------------------------
 $font-size-h1--md: 3.6rem !default
-$line-height-h1--md: round-float(4.8rem/$font-size-h1--md, 2) !default
+$line-height-h1--md: round-float(4.8rem/$font-size-h1--md, 1) !default
 // ----------------------------------------------------
 $font-size-h1--sm: 3.0rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
+$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 1) !default
 // ----------------------------------------------------
 =font-h1()
 	font-size: $font-size-h1
@@ -90,10 +90,10 @@ $font-size-h2: round-float($font-size-h1*3.6rem/4.8rem, 1) !default
 $line-height-h2: round-float(4.8rem/3.6rem, 2) !default
 // ----------------------------------------------------
 $font-size-h2--md: round-float($font-size-h1--md*0.84, 1) !default
-$line-height-h2--md: round-float(($line-height-h1--md*1.02),2) !default
+$line-height-h2--md: round-float(($line-height-h1--md*1.02), 1) !default
 // ----------------------------------------------------
 $font-size-h2--sm: round-float($font-size-h1--sm*0.87, 1) !default
-$line-height-h2--sm: round-float(($line-height-h1--sm*1.01),2) !default
+$line-height-h2--sm: round-float(($line-height-h1--sm*1.01), 1) !default
 // ----------------------------------------------------
 =font-h2()
 	font-size: $font-size-h2
@@ -112,7 +112,7 @@ $font-size-h3: round-float($font-size-h1*2.4rem/4.8rem, 1) !default
 $line-height-h3: round-float(3.6rem/2.4rem, 2) !default
 // ----------------------------------------------------
 $font-size-h3--sm: round-float($font-size-h1--sm*0.73, 1) !default
-$line-height-h3--sm: round-float(($line-height-h1--sm*1.05),2) !default
+$line-height-h3--sm: round-float(($line-height-h1--sm*1.05), 1) !default
 // ----------------------------------------------------
 =font-h3()
 	font-size: $font-size-h3
@@ -175,7 +175,7 @@ $text-shadow: 0 0 5px rgba($bg-color, 0.5) !default
 //
 // @example css - Вывод CSS
 // .user-content
-$user-content: user-content !default
+$user-content: section-content !default
 
 
 // Layout
@@ -184,7 +184,7 @@ $user-content: user-content !default
 // минимальная ширина сайта
 $page-layout-min: 32rem !default
 // отступы для всего сайта
-$page-layout-space: 1.8rem 1.5rem !default // v h
+$page-layout-space: 2.2rem 1.5rem !default // v h
 // максимальная ширина сайта
 $page-layout-width: 76.8rem !default
 $page-layout-width-desk: 36rem !default
@@ -205,19 +205,9 @@ $grid-space--sm: 8px 10px !default // v h
 $list-space: 30px
 
 
-// Sidebar
+// Header
 // ==========================================================================
-$sidebar-width: 260px !default
-
-
-// Aside
-// ==========================================================================
-$aside-width: 160px !default
-
-
-// Footer
-// ==========================================================================
-$footer-grid-space: 30px 0 !default // v h
+$header-height: 6.3rem !default
 
 
 // Buttons
@@ -225,13 +215,14 @@ $footer-grid-space: 30px 0 !default // v h
 
 $btn-height: 50px !default
 $btn-bg-color: $bg-color !default
-$btn-bg-hover-color: darken($btn-bg-color, 20%) !default
+$btn-bg-hover-color: darken($btn-bg-color, 10%) !default
 $btn-text-color: white !default
 $btn-disabled-color: #ccc !default
 $btn-font-size: 16px !default
 //$btn-font-size--mob: 16px !default
 $btn-line-height: 22px !default
 //$btn-line-height--mob: 20px !default
+$btn-border-width: 2px
 
 
 // Forms
