@@ -7,6 +7,7 @@
 	display: flex
 	align-items: center
 	justify-content: space-between
+	height: 6.3rem
 
 	a
 		color: currentColor
@@ -20,8 +21,9 @@
 		line-height: 0
 		user-select: none
 		-webkit-tap-highlight-color: transparent
+		cursor: pointer
 		// transition
-		$prop: transform
+		$prop: opacity, filter
 		will-change: $prop
 		transition:
 			property: $prop
@@ -32,10 +34,13 @@
 			content: ''
 			display: block
 			margin: 0 auto
-			+triangle(left, $color: #fff, $size: 1.8rem, $kef: 1)
+			+triangle(left, $color: #fff, $size: 18px, $kef: 1.0)
 
 		.no-touchevents &:hover
-			transform: translate(0, -3px)
+			filter: drop-shadow(1px 1px 2px rgba(white,0.6))
+
+		.no-touchevents &:active
+			opacity: 0.8
 
 	.nav__arr_bottom
 		&::before
@@ -47,18 +52,29 @@
 
 	.nav__page
 		+font-bold
-		font-size: 2.7rem
+		font-size: 2.5rem
 		line-height: 3.6rem
+		text-transform: uppercase
+		cursor: default
 		// transition
-		$prop: transform
+		$prop: opacity, filter
 		will-change: $prop
 		transition:
 			property: $prop
 			duration: $animation-speed
 			timing-function: ease-in-out
 
+	a.nav__page
+		cursor: pointer
+
+	.nav__page_large
+		font-size: 2.7rem
+
 	.no-touchevents & a.nav__page:hover
-		transform: translate(0, -3px)
+		filter: drop-shadow(1px 1px 2px rgba(white,0.6))
+
+	.no-touchevents & a.nav__page:active
+		opacity: 0.8
 
 	.nav__info
 		display: inline-block
@@ -68,10 +84,11 @@
 		background-size: 100%
 		font-size: 0
 		line-height: 0
+		border-radius: 50%
 		user-select: none
 		-webkit-tap-highlight-color: transparent
 		// transition
-		$prop: transform
+		$prop: opacity, filter
 		will-change: $prop
 		transition:
 			property: $prop
@@ -79,7 +96,10 @@
 			timing-function: ease-in-out
 
 		.no-touchevents &:hover
-			transform: translate(0, -3px)
+			filter: drop-shadow(1px 1px 2px rgba(white,0.6))
+
+		.no-touchevents &:active
+			opacity: 0.8
 
 /* nav end
 
@@ -88,15 +108,16 @@
 	height: 100%
 	flex-grow: 1
 	+font-bold
-	padding: 2rem nth($page-layout-space, 2)
+	font-size: 1.6rem
+	line-height: round-float(1.9 / 1.6, 1)
+	padding: 2.1rem nth($page-layout-space, 2)
 	background-color: $bg-color
 	background-repeat: no-repeat
 	background-position: center
 
-	+media('>tab-sm')
-		background-image: none !important
-
 	p, ul, ol, table
+		margin-bottom: 1.9rem
+
 		&:last-child
 			margin-bottom: 0
 
@@ -108,14 +129,16 @@
 
 .main-section__figure
 	padding: 0
-	margin: 0 0 2rem
+	margin: 0 0 1.9rem
 	text-align: center
 
 .main-section__title
-	margin-bottom: 0.3em
+	width: 100% // Fixed for ie
+	margin-bottom: 0.2em
 	+font-bold
-	font-size: 3.6rem
-	line-height: round-float(4.2 / 3.6, 1)
+	font-size: 3.8rem
+	line-height: round-float(4.2 / 3.8, 1)
+	letter-spacing: 0.08em
 	text-transform: uppercase
 	text-align: center
 	text-shadow: $text-shadow
@@ -162,8 +185,9 @@
 .sign__name
 	margin-bottom: 0.5em
 	display: block
-	font-size: 1.25em
+	font-size: 1.2em
 	text-transform: uppercase
+	font-weight: 500
 
 	&:last-child
 		margin-bottom: 0
@@ -184,41 +208,72 @@
 	min-height: 230px
 	padding: 2rem nth($page-layout-space, 2)
 	background-color: $bg-color
-	background-position: center
-	background-repeat: no-repeat
-	background-size: 360px
 
 a.section
 	text-decoration: none
 	color: currentColor
-	// transition
-	$prop: background-color
-	will-change: $prop
-	transition:
-		property: $prop
-		duration: $animation-speed
-		timing-function: ease-in-out
+
+.section__bg
+	position: absolute
+	width: 100%
+	height: 100%
+	left: 0
+	top: 0
+	background-position: center
+	background-repeat: no-repeat
+	background-size: 360px
 
 .section_alt
 	background-color: $bg-color-alt
-	background-image: url(../../img/sect_1@2x.png)
-	background-size: 360px
 
+	&::before
+		content: ''
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+		background-color: rgba(black, 0.09)
+		// transition
+		$prop: background-color
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+			timing-function: ease-in-out
+
+a.section_alt
 	.no-touchevents &:hover
-		background-color: darken($bg-color-alt, 10%)
+		&::before
+			background-color: rgba(white, 0.15)
 
 .section_light
-	background-color: $bg-color-light
+	background-color: white
 
+	&::before
+		content: ''
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+		background-color: rgba($bg-color, 0.86)
+		// transition
+		$prop: background-color
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+			timing-function: ease-in-out
+
+a.section_light
 	.no-touchevents &:hover
-		background-color: darken($bg-color-light, 10%)
-
-.section_footer
-	background-image: url(../../img/bg-footer2x.png)
-	background-size: 337px
+		&::before
+			background-color: rgba($bg-color, 0.65)
 
 .section__date
-	margin-bottom: 0.3em
+	position: relative
+	margin-bottom: 0.2em
 	+font-normal
 	font-size: 1.8rem
 	line-height: round-float(2.4 / 1.8, 1)
@@ -229,10 +284,12 @@ a.section
 		margin-bottom: 0
 
 .section__title
-	margin-bottom: 0.3em
+	position: relative
+	width: 100% // Fixed for ie
+	margin-bottom: 0.2em
 	+font-bold
 	font-size: 2.8rem
-	line-height: round-float(3.6 / 2.8, 1)
+	line-height: round-float(3.3 / 2.8, 1)
 	text-transform: uppercase
 	text-align: center
 	text-shadow: $text-shadow
@@ -243,22 +300,56 @@ a.section
 	+media('<mob-sm')
 		font-size: 2.0rem
 
+.section__title_alt
+	margin-bottom: 0.5em
+	font-size: 2.9rem
+	letter-spacing: 0.07em
+
 .section__note
+	position: relative
 	//position: absolute
 	//left: 0
 	//top: 0
 	align-self: start
 	+font-normal
-	margin-bottom: 0.5em
+	margin-bottom: 1.5rem
 	font-size: 1.2rem
-	line-height: round-float(1.6 / 1.2, 1)
+	line-height: round-float(1.44 / 1.2, 1)
 	text-transform: uppercase
 	letter-spacing: normal
 	width: 165px
 	max-width: 100%
 
 .section__meta
+	position: relative
 	text-align: center
+
+// section footer
+.section_footer
+	flex-grow: 0
+	justify-content: flex-start
+	padding-top: 1.5rem
+	min-height: 210px
+
+// active
+a.section
+	.section__date, .section__title, .section__meta, .section__note
+		// transition
+		$prop: opacity, text-shadow
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+			timing-function: ease-in-out
+
+	.no-touchevents a:hover
+		.section__title, .section__date
+			text-shadow: $text-shadow-hover
+
+	.no-touchevents &:active
+		.section__date, .section__title, .section__meta, .section__note
+			opacity: 0.8
+
 
 /*section end
 
@@ -285,3 +376,12 @@ a.section
 			margin-bottom: 0
 
 /*section content end
+
+/*footer buttons
+.buttons-wrap
+	text-align: center
+	min-height: 10rem
+	padding-top: 20px
+	padding-bottom: 20px
+
+/*footer buttons end

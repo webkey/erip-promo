@@ -14,21 +14,23 @@ html
 			+scroll-blocked
 
 body
+
 	position: relative
 	+font-normal
 	+font($font-size, $line-height)
 	color: $text-color
 	min-width: $page-layout-min
-	background-color: $bg-color
-	background-image: url(../../img/bg-desktop.png)
-	background-repeat: no-repeat
-	background-position: center
-	background-size: auto
+	background: $bg-color url(../../img/bg-desktop.png) no-repeat center 21px fixed
 
 	// выделение текста
-	*::selection
+	//*::selection
 		background-color: $base-color
 		color: white
+
+	//1.5 dpr
+	@media(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+		background-image: url(../../img/bg-desktop@2x.png)
+		background-size: round(2136 / 2) * 1px
 
 /* === LAYOUT ===
 .max-wrap
@@ -41,6 +43,13 @@ body
 	+padding-horizontal(nth($page-layout-space, 2))
 	+push-auto
 
+.wrapper-flex
+	display: flex
+	flex-direction: column
+	flex-grow: 1
+	flex-shrink: 1
+	align-items: stretch
+
 .wrapper
 	position: relative
 	padding-top: $header-height
@@ -49,16 +58,10 @@ body
 	justify-content: space-between
 	align-items: stretch
 	margin: 0 auto
+	width: 100%
 	min-height: 100vh
 	max-width: $page-layout-width
 	box-shadow: 0 2px 4px rgba($shadow-color, 0.5)
-	// transition
-	$prop: max-width
-	will-change: $prop
-	transition:
-		property: $prop
-		duration: $animation-speed
-		timing-function: ease-in-out
 
 	+media('>tab-sm')
 		max-width: $page-layout-width-desk
@@ -74,6 +77,10 @@ body
 	display: flex
 	flex-direction: column
 	flex-grow: 1
+
+	.home-page &
+		padding-top: 3.6rem
+		padding-bottom: 6.3rem
 
 /* === CONTENT end ===
 
@@ -100,16 +107,28 @@ body
 	+media('>tab-sm')
 		max-width: $page-layout-width-desk
 
-	.nav
-		height: 100%
-
 /* === HEADER end ===
 
 /* === FOOTER ===
 .footer
 	position: relative
+
+.footer_float
+	position: fixed
+	left: 0
+	bottom: 0
+	width: 100%
+	z-index: 5
+
+.footer__holder
+	height: 100%
 	background-color: $bg-color
-	padding: nth($page-layout-space, 1) nth($page-layout-space, 2)
 	box-shadow: 0 -2px 12px rgba($shadow-color, 0.5)
+	+padding-horizontal(nth($page-layout-space, 2))
+	margin: 0 auto
+	max-width: $page-layout-width
+
+	+media('>tab-sm')
+		max-width: $page-layout-width-desk
 
 /* === FOOTER end ===

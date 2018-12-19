@@ -31,7 +31,8 @@
 	cursor: pointer
 
 	//position: relative
-	+font-normal
+	font-family: $font-norm
+	font-weight: 500
 	text-transform: uppercase
 	color: $btn-text-color
 	padding: floor(($btn-height - $btn-line-height)/2 - $btn-border-width) 20px ceil(($btn-height - $btn-line-height)/2 - $btn-border-width)
@@ -41,7 +42,7 @@
 	border-radius: 4px
 	margin: 0
 	// transition
-	$prop: box-shadow, background-color
+	$prop: box-shadow, opacity
 	will-change: $prop
 	transition:
 		property: $prop
@@ -55,13 +56,29 @@
 
 	// hover
 	.no-touchevents &:hover
-		box-shadow: 0 2px 12px rgba($shadow-color, 0.8)
-		background-color: $btn-bg-hover-color
+		box-shadow: 0 2px 12px rgba(white, 0.6)
+
+	// active
+	.no-touchevents &:active
+		opacity: 0.8
+
+	// =========== section content ===========
+	// hover
+	.no-touchevents .section-content &:hover
+		box-shadow: 0 2px 12px rgba(255, 93, 0, 1)
+
+	// active
+	.no-touchevents .section-content &:active
+		opacity: 0.8
+
+	// =========== section content end ===========
 
 	// disabled
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
+		opacity: 1 !important
 		background-color: $btn-disabled-color !important
+		box-shadow: none !important
 
 		&::before, &::after
 			display: none
