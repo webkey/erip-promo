@@ -900,6 +900,8 @@ table td, table th {
 	font-weight: 700;
 	font-size: 1.6rem;
 	line-height: 1.2;
+	text-decoration: none;
+	color: inherit;
 	padding: 2.1rem 1.5rem;
 	background-color: #f48130;
 	background-repeat: no-repeat;
@@ -968,6 +970,21 @@ table td, table th {
 
 .main-section__enter:last-child {
 	margin-bottom: 0;
+}
+
+a.main-section .main-section__figure img, a.main-section .main-section__title, a.main-section .main-section__sub-title, a.main-section .main-section__enter {
+	will-change: opacity, filter;
+	transition-property: opacity, filter;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+.no-touchevents a.main-section:hover .main-section__figure img, .no-touchevents a.main-section:hover .main-section__title, .no-touchevents a.main-section:hover .main-section__sub-title, .no-touchevents a.main-section:hover .main-section__enter {
+	filter: drop-shadow(1px 1px 2px rgba(255, 255, 255, 0.6));
+}
+
+.no-touchevents a.main-section:active .main-section__figure img, .no-touchevents a.main-section:active .main-section__title, .no-touchevents a.main-section:active .main-section__sub-title, .no-touchevents a.main-section:active .main-section__enter {
+	opacity: 0.8;
 }
 
 /*main section end */

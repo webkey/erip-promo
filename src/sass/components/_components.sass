@@ -110,6 +110,8 @@
 	+font-bold
 	font-size: 1.6rem
 	line-height: round-float(1.9 / 1.6, 1)
+	text-decoration: none
+	color: inherit
 	padding: 2.1rem nth($page-layout-space, 2)
 	background-color: $bg-color
 	background-repeat: no-repeat
@@ -165,6 +167,25 @@
 
 	&:last-child
 		margin-bottom: 0
+
+// hover
+a.main-section
+	.main-section__figure img, .main-section__title, .main-section__sub-title, .main-section__enter
+		// transition
+		$prop: opacity, filter
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+			timing-function: ease-in-out
+
+	.no-touchevents &:hover
+		.main-section__figure img, .main-section__title, .main-section__sub-title, .main-section__enter
+			filter: drop-shadow(1px 1px 2px rgba(white,0.6))
+
+	.no-touchevents &:active
+		.main-section__figure img, .main-section__title, .main-section__sub-title, .main-section__enter
+			opacity: 0.8
 
 /*main section end
 
