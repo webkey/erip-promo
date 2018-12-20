@@ -20,7 +20,10 @@ body
 	+font($font-size, $line-height)
 	color: $text-color
 	min-width: $page-layout-min
-	background: $bg-color url(../../img/bg-desktop.png) no-repeat center 21px fixed
+	//background: $bg-color url(../../img/bg-desktop.png) no-repeat center -86px fixed
+	//background-image: url(../../img/bg-desktop@2x.png)
+	background: $bg-color url(../../img/bg-desktop@2x.png) no-repeat center -86px fixed
+	background-size: round(2560 / 2) * 1px
 
 	// выделение текста
 	//*::selection
@@ -28,9 +31,9 @@ body
 		color: white
 
 	//1.5 dpr
-	@media(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+	//@media(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
 		background-image: url(../../img/bg-desktop@2x.png)
-		background-size: round(2136 / 2) * 1px
+		background-size: round(2560 / 2) * 1px
 
 /* === LAYOUT ===
 .max-wrap
@@ -78,10 +81,6 @@ body
 	flex-direction: column
 	flex-grow: 1
 
-	.home-page &
-		padding-top: 3.6rem
-		padding-bottom: 6.3rem
-
 /* === CONTENT end ===
 
 /* === HEADER ===
@@ -113,7 +112,7 @@ body
 .footer
 	position: relative
 
-.footer_float
+.footer_float, .home-page .footer
 	position: fixed
 	left: 0
 	bottom: 0

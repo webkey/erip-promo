@@ -118,10 +118,14 @@
 	background-position: center
 
 	p, ul, ol, table
-		margin-bottom: 1.9rem
 
 		&:last-child
 			margin-bottom: 0
+
+	.home-page &
+		padding-top: 2.1rem + 3.6
+
+		padding-bottom: 2.1rem + 6.3
 
 .main-section_align-center
 	text-align: center
@@ -164,6 +168,13 @@
 	font-size: 2.0rem
 	line-height: round-float(2.4 / 2.0, 1)
 	margin-bottom: 0.5em
+	padding-top: 1.9rem
+
+	p, ul, ol, table
+		margin-bottom: 2.4rem
+
+		&:last-child
+			margin-bottom: 0
 
 	&:last-child
 		margin-bottom: 0
@@ -198,7 +209,7 @@ a.main-section
 
 .sign__pre
 	display: block
-	margin-bottom: 0.1em
+	margin-bottom: 0.7rem
 
 	&:last-child
 		margin-bottom: 0
@@ -206,7 +217,8 @@ a.main-section
 .sign__name
 	margin-bottom: 0.5em
 	display: block
-	font-size: 1.2em
+	font-size: 1.3em
+	letter-spacing: 0.1em
 	text-transform: uppercase
 	font-weight: 500
 
@@ -352,6 +364,10 @@ a.section_light
 	padding-top: 1.5rem
 	min-height: 210px
 
+// section title
+.section_title
+	padding-bottom: 3.9rem
+
 // active
 a.section
 	.section__date, .section__title, .section__meta, .section__note
@@ -378,6 +394,8 @@ a.section
 .section-content
 	position: relative
 	flex-grow: 1
+	font-size: 1.6rem
+	line-height: 1.9rem
 	color: $text-color-alt
 	padding: 2rem nth($page-layout-space, 2) 3.6rem
 	background-color: #fff
@@ -393,8 +411,26 @@ a.section
 			margin-bottom: 0
 
 	p, ul, ol, table
+		margin-bottom: 1.9rem
+
 		&:last-child
 			margin-bottom: 0
+
+	.sign
+		margin-bottom: 3.2rem
+
+		&:last-child
+			margin-bottom: 0
+
+	.sign__pre
+		margin-bottom: 0.4rem
+
+		&:last-child
+			margin-bottom: 0
+
+	.sign__name
+		font-size: 1.1em
+		letter-spacing: 0.1em
 
 /*section content end
 
