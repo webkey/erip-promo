@@ -198,7 +198,7 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 	gulp.src('src/assets/**/*') // Переносим дополнительные файлы в продакшен
 		.pipe(gulp.dest(path.dist + '/assets'));
 
-	gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/typography.html', '!src/forms.html', '!src/404.html', '!src/_temp_*.html', 'src/*.html']) // Переносим HTML в продакшен
+	gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/typography.html', '!src/forms.html', '!src/_temp_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
 		.pipe(gulp.dest(path.dist));
 
