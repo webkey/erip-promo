@@ -202,7 +202,7 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 		.pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
 		.pipe(gulp.dest(path.dist));
 
-	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
+	gulp.src(['src/*.png', 'src/*.ico', 'src/*.jpg', 'src/.htaccess', 'src/site.webmanifest']) // Переносим favicon и др. файлы в продакшин
 		.pipe(gulp.dest(path.dist));
 
 });

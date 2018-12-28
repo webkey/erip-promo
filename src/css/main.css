@@ -1046,6 +1046,9 @@ a.main-section .main-section__figure img, a.main-section .main-section__title, a
 	min-height: 230px;
 	padding: 2rem 1.5rem;
 	background-color: #f48130;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 a.section {
