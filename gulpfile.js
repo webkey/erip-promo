@@ -198,9 +198,13 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 	gulp.src('src/assets/**/*') // Переносим дополнительные файлы в продакшен
 		.pipe(gulp.dest(path.dist + '/assets'));
 
-	gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/typography.html', '!src/forms.html', '!src/_temp_*.html', 'src/*.html']) // Переносим HTML в продакшен
+	gulp.src(['!src/__*.html', '!src/event_*.html', '!src/_tpl_*.html', '!src/typography.html', '!src/forms.html', '!src/event.html', '!src/_temp_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
 		.pipe(gulp.dest(path.dist));
+
+	gulp.src(['src/2019/**/*.html']) // Переносим HTML в продакшен
+		.pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
+		.pipe(gulp.dest(path.dist + '/2019'));
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/*.jpg', 'src/.htaccess', 'src/site.webmanifest']) // Переносим favicon и др. файлы в продакшин
 		.pipe(gulp.dest(path.dist));
