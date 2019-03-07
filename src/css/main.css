@@ -1063,7 +1063,7 @@ a.section {
 	left: 0;
 	top: 0;
 	background-position: center;
-	background-repeat: no-repeat;
+	background-repeat: repeat-x;
 	background-size: 360px;
 }
 
